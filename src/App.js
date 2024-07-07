@@ -1,5 +1,5 @@
-import {Routes, Route} from 'react-router-dom'
-import {Main, Login, Register, Navbar} from './components'
+import { Routes, Route } from 'react-router-dom'
+import { Main, Login, Register, Navbar } from './components'
 
 const App = () => {
 	return (
@@ -13,4 +13,5 @@ const App = () => {
 		</div>
 	)
 }
+
 export default App
