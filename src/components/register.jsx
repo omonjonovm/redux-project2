@@ -30,7 +30,7 @@ const Register = () => {
 		if (loggedIn) {
 			navigate('/')
 		}
-	}, [])
+	},[loggedIn])
 	return (
 		<form className="container text-center">
 			<main className="form-signin w-25 m-auto">
