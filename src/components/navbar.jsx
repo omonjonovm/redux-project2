@@ -16,7 +16,7 @@ const Navbar = () => {
    navigate('/login')
   }
   return (
-    <div className="container pt-2 d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+    <div className="pt-2 d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
       <Link to={'/'}>
         <img src={logo} alt="" height={100} />
       </Link>
