@@ -39,7 +39,7 @@ const Login = () => {
 				<h1 className="h3 mb-3 fw-normal">Please login</h1>
 				<ValidationError />
 				<Input label={"Email address"} state={email} setState={setEmail} />
-				<Input label={"Password"} state={password} setState={setPassword} />
+				<Input label={"Password"} type={'password'} state={password} setState={setPassword} />
 
 				<button
 					className="btn btn-primary mt-2  w-100 py-2"
