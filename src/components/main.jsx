@@ -1,10 +1,28 @@
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import {Loader} from '../ui'
 import { useNavigate } from "react-router-dom"
+import { useEffect } from "react"
+import ArticleServie from "../service/article"
+import { getArticleStart, getArticleSuccess } from "../slice/article"
+
 
 const Main = () => {
+	const dispatch = useDispatch()
 	const {articles ,isLoading} = useSelector(state => state.article)
 	const navigate = useNavigate()
+
+	const getArticles = async () => {
+		dispatch(getArticleStart())
+		try {
+			const response = await ArticleServie.getArticles()
+			dispatch(getArticleSuccess(response.articles))
+		} catch (error) {
+			console.log(error);
+		}
+	}
+	useEffect(() => {
+    getArticles()
+	},[])
 	return <div>
 		<div className="album py-5 bg-body-tertiary">
 		<div>
