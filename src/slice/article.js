@@ -39,7 +39,7 @@ export const articleSlice = createSlice({
       state.isLoading = false
     },
     postArticleFailure: state => {
-      state.isLoading = false
+      state.isLoading = false 
       state.error = "Error"
     }
   }

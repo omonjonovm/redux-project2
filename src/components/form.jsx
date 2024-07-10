@@ -12,7 +12,7 @@ const Form = props => {
       <button className='w-100 btn btn-lg btn-primary mt-2' disabled={isLoading} type='submit'>
         {isLoading ? "Loading..." : 'Submit'}
       </button>
-    </form>
+    </form> 
   )
 }
 
