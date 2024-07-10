@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import { getArticleDetailFailure, getArticleDetailStart, getArticleDetailSuccess } from '../slice/article'
+import { useNavigate, useParams } from 'react-router-dom'
+import { getArticleDetailFailure, getArticleDetailStart, getArticleDetailSuccess, postArticleFailure, postArticleStart, postArticleSuccess } from '../slice/article'
 import ArticleServie from '../service/article'
 import { useDispatch } from 'react-redux'
 import Form from './form'
@@ -11,6 +11,7 @@ const EditArticle = () => {
   const [body, setBody] = useState('')
   const dispatch = useDispatch()
   const { slug } = useParams()
+  const navigate = useNavigate()
 
   useEffect(() => {
     const getArticleDetail = async () => {
@@ -27,7 +28,23 @@ const EditArticle = () => {
     };
     getArticleDetail();
   }, []);
-  const  formSubmit = () => {}
+
+
+  const formSubmit = async (e) => {
+    e.preventDefault()
+    const article = { title, description, body }
+    dispatch(postArticleStart())
+    try {
+     await ArticleServie.editArticle(slug,article)
+      dispatch(postArticleSuccess())
+      navigate('/')
+    } catch (error) {
+      dispatch(postArticleFailure())
+      console.log(error);
+    }
+  }
+
+
   const formProps = { title, setTitle, description, setDescription, body, setBody, formSubmit }
   return (
     <div className='text-center'>
